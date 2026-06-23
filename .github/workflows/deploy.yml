@@ -20,3 +20,4 @@ jobs:
             cd /home/usamamssoftsites/public_html/magplan/wp-content
             git pull origin main
             echo "Deployed at $(date)"
+
