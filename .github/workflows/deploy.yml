@@ -17,7 +17,7 @@ jobs:
           passphrase: ${{ secrets.CPANEL_SSH_PASSPHRASE }}
           port: 22
           script: |
-            cd /home/usamamssoftsites/public_html/magplan/wp-content
+            cd /home/usamamssoftsites/public_html/magplan/
             git pull origin main
             echo "Deployed at $(date)"
 
