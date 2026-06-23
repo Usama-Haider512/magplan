@@ -1,23 +1,22 @@
 name: Deploy to cPanel
 
 on:
-  push:
-    branches: [main]
+  push:
+    branches: [main]
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.CPANEL_HOST }}
-          username: ${{ secrets.CPANEL_USER }}
-          key: ${{ secrets.CPANEL_SSH_KEY }}
-          passphrase: ${{ secrets.CPANEL_SSH_PASSPHRASE }}
-          port: 22
-          script: |
-            cd /home/usamamssoftsites/public_html/magplan/wp-content
-            git pull origin main
-            echo "Deployed at $(date)"
-
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to usamamssoftsites
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.CPANEL_HOST }}
+          username: ${{ secrets.CPANEL_USER }}
+          key: ${{ secrets.CPANEL_SSH_KEY }}
+          passphrase: ${{ secrets.CPANEL_SSH_PASSPHRASE }}
+          port: 22
+          script: |
+            cd /home/usamamssoftsites/public_html/magplan/wp-content
+            git pull origin main
+            echo "Deployed at $(date)"
